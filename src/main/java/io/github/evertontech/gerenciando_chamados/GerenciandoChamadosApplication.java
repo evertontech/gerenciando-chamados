@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class GerenciandoChamadosApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GerenciandoChamadosApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GerenciandoChamadosApplication.class, args);
+    }
 
 }
