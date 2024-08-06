@@ -1,9 +1,6 @@
 package io.github.evertontech.gerenciando_chamados.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -26,8 +23,10 @@ public class Chamado {
 
     private LocalDateTime dataFechamento;
 
+    @ManyToOne
     private Tecnico tecnico;
 
+    @ManyToOne
     private CategoriaChamado categoria;
 
     public Chamado() {
