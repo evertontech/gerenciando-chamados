@@ -16,4 +16,9 @@ public class CategoriaChamadoController {
     public CategoriaChamado criar(@RequestBody CategoriaChamado categoriaChamado) {
         return categoriaChamadoRepository.save(categoriaChamado);
     }
+
+    @GetMapping
+    public Iterable<CategoriaChamado> listar() {
+        return categoriaChamadoRepository.findAll();
+    }
 }
