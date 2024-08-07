@@ -1,7 +1,7 @@
 package io.github.evertontech.gerenciando_chamados.controller;
 
 import io.github.evertontech.gerenciando_chamados.model.entity.CategoriaChamado;
-import io.github.evertontech.gerenciando_chamados.model.repository.CategoriaChamadoRepository;
+import io.github.evertontech.gerenciando_chamados.service.CategoriaChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,31 +12,30 @@ import java.util.Optional;
 public class CategoriaChamadoController {
 
     @Autowired
-    CategoriaChamadoRepository categoriaChamadoRepository;
+    CategoriaChamadoService categoriaChamadoService;
 
     @PostMapping
     public CategoriaChamado criar(@RequestBody CategoriaChamado categoriaChamado) {
-        return categoriaChamadoRepository.save(categoriaChamado);
+        return categoriaChamadoService.criar(categoriaChamado);
     }
 
     @GetMapping
     public Iterable<CategoriaChamado> listar() {
-        return categoriaChamadoRepository.findAll();
+        return categoriaChamadoService.listar();
     }
 
     @GetMapping("/{id}")
     public Optional<CategoriaChamado> obterPorId(@PathVariable Long id) {
-        return categoriaChamadoRepository.findById(id);
+        return categoriaChamadoService.obterPorId(id);
     }
 
     @PutMapping("/{id}")
     public CategoriaChamado atualizar(@RequestBody CategoriaChamado categoriaChamado, @PathVariable Long id) {
-        categoriaChamado.setId(id);
-        return categoriaChamadoRepository.save(categoriaChamado);
+        return categoriaChamadoService.atualizar(categoriaChamado, id);
     }
 
     @DeleteMapping(path = "/{id}")
     public void deletar(@PathVariable Long id) {
-        categoriaChamadoRepository.deleteById(id);
+        categoriaChamadoService.deletar(id);
     }
 }
