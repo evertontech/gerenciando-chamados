@@ -1,6 +1,10 @@
 package io.github.evertontech.gerenciando_chamados.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDateTime;
 
@@ -11,16 +15,24 @@ public class Chamado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Max(50)
+    @NotBlank
     private String titulo;
 
+    @Max(150)
+    @NotBlank
     private String descricao;
 
+    @NotBlank
     private String status;
 
+    @NotBlank
     private String prioridade;
+
 
     private LocalDateTime dataAbertura;
 
+    @PastOrPresent
     private LocalDateTime dataFechamento;
 
     @ManyToOne
@@ -30,7 +42,7 @@ public class Chamado {
     private CategoriaChamado categoria;
 
     public Chamado() {
-
+        this.setDataAbertura(LocalDateTime.now());
     }
 
     public void setId(Long id) {
