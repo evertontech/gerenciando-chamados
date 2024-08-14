@@ -1,21 +1,21 @@
-package io.github.evertontech.gerenciando_chamados.dto.saida;
+package io.github.evertontech.gerenciando_chamados.dto.saida.resumo;
 
-import io.github.evertontech.gerenciando_chamados.model.entity.CategoriaChamado;
+import io.github.evertontech.gerenciando_chamados.model.entity.CategoriaDeChamado;
 
-public class CategoriaChamadoSaidaListaDTO {
+public class CategoriaDeChamadoResumoSaidaDTO {
 
     private Long id;
 
     private String nome;
 
-    static public CategoriaChamadoSaidaListaDTO paraDto(CategoriaChamado entidade) {
-        var dto = new CategoriaChamadoSaidaListaDTO();
+    static public CategoriaDeChamadoResumoSaidaDTO paraDto(CategoriaDeChamado entidade) {
+        var dto = new CategoriaDeChamadoResumoSaidaDTO();
         dto.setId(entidade.getId());
         dto.setNome(entidade.getNome());
         return dto;
     }
 
-    public CategoriaChamadoSaidaListaDTO() {
+    public CategoriaDeChamadoResumoSaidaDTO() {
     }
 
     public Long getId() {

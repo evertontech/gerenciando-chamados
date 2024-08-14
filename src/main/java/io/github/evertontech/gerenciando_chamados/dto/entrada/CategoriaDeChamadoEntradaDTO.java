@@ -1,10 +1,9 @@
 package io.github.evertontech.gerenciando_chamados.dto.entrada;
 
-import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 
-public class CategoriaChamadoEntradaDTO {
+public class CategoriaDeChamadoEntradaDTO {
 
     @NotBlank
     @Max(35)
@@ -13,7 +12,7 @@ public class CategoriaChamadoEntradaDTO {
     @Max(150)
     private String descricao;
 
-    public CategoriaChamadoEntradaDTO() {
+    public CategoriaDeChamadoEntradaDTO() {
 
     }
 
