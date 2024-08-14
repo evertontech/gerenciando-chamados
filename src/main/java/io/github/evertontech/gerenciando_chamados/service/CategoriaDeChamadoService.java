@@ -17,11 +17,10 @@ public class CategoriaDeChamadoService {
     @Autowired
     CategoriaDeChamadoRepository categoriaDeChamadoRepository;
 
-    public CategoriaDeChamado criar(CategoriaDeChamadoEntradaDTO dto) {
-        CategoriaDeChamado entidade = new CategoriaDeChamado();
-        entidade.setNome(dto.getNome());
-        entidade.setDescricao(dto.getDescricao());
-        return categoriaDeChamadoRepository.save(entidade);
+    public CategoriaDeChamadoDetalheSaidaDTO criar(CategoriaDeChamadoEntradaDTO dtoEntrada) {
+        var entidade = CategoriaDeChamadoEntradaDTO.paraEntidade(dtoEntrada);
+        categoriaDeChamadoRepository.save(entidade);
+        return CategoriaDeChamadoDetalheSaidaDTO.paraDto(entidade);
     }
 
     public Iterable<CategoriaDeChamadoResumoSaidaDTO> listar() {

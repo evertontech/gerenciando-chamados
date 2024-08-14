@@ -19,7 +19,7 @@ public class CategoriaDeChamadoController {
     CategoriaDeChamadoService categoriaDeChamadoService;
 
     @PostMapping
-    public CategoriaDeChamado criar(@RequestBody @Valid CategoriaDeChamadoEntradaDTO dto) {
+    public CategoriaDeChamadoDetalheSaidaDTO criar(@RequestBody @Valid CategoriaDeChamadoEntradaDTO dto) {
         return categoriaDeChamadoService.criar(dto);
     }
 

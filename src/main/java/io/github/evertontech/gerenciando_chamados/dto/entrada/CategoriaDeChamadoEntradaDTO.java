@@ -1,5 +1,6 @@
 package io.github.evertontech.gerenciando_chamados.dto.entrada;
 
+import io.github.evertontech.gerenciando_chamados.model.entity.CategoriaDeChamado;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 
@@ -11,6 +12,13 @@ public class CategoriaDeChamadoEntradaDTO {
 
     @Max(150)
     private String descricao;
+
+    static public CategoriaDeChamado paraEntidade(CategoriaDeChamadoEntradaDTO dto) {
+        var entidade = new CategoriaDeChamado();
+        entidade.setNome(dto.getNome());
+        entidade.setDescricao(dto.getDescricao());
+        return entidade;
+    }
 
     public CategoriaDeChamadoEntradaDTO() {
 
