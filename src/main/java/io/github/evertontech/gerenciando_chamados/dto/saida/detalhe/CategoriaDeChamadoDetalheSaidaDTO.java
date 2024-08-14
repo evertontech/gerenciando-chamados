@@ -14,6 +14,7 @@ public class CategoriaDeChamadoDetalheSaidaDTO {
         var dto = new CategoriaDeChamadoDetalheSaidaDTO();
         dto.setId(entidade.getId());
         dto.setNome(entidade.getNome());
+        dto.setDescricao(entidade.getDescricao());
         return dto;
     }
 

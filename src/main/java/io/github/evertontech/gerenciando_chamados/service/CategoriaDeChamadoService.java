@@ -15,31 +15,28 @@ import java.util.stream.StreamSupport;
 public class CategoriaDeChamadoService {
 
     @Autowired
-    CategoriaDeChamadoRepository categoriaChamadoRepository;
-
+    CategoriaDeChamadoRepository categoriaDeChamadoRepository;
 
     public CategoriaDeChamado criar(CategoriaDeChamadoEntradaDTO dto) {
         CategoriaDeChamado entidade = new CategoriaDeChamado();
         entidade.setNome(dto.getNome());
         entidade.setDescricao(dto.getDescricao());
-        return categoriaChamadoRepository.save(entidade);
+        return categoriaDeChamadoRepository.save(entidade);
     }
 
     public Iterable<CategoriaDeChamadoResumoSaidaDTO> listar() {
-        var categorias = categoriaChamadoRepository.findAll();
+        var categorias = categoriaDeChamadoRepository.findAll();
         var stream = StreamSupport.stream(categorias.spliterator(), true);
         return stream.map(CategoriaDeChamadoResumoSaidaDTO::paraDto).toList();
     }
 
     public Optional<CategoriaDeChamadoDetalheSaidaDTO> obterPorId(Long id) {
-
-        Optional<CategoriaDeChamado> pesquisa = categoriaChamadoRepository.findById(id);
+        Optional<CategoriaDeChamado> pesquisa = categoriaDeChamadoRepository.findById(id);
         if (pesquisa.isPresent()) {
             var entidade = pesquisa.get();
             var dto = CategoriaDeChamadoDetalheSaidaDTO.paraDto(entidade);
             return Optional.of(dto);
         }
-
         return Optional.empty();
     }
 
@@ -48,10 +45,10 @@ public class CategoriaDeChamadoService {
         entidade.setId(id);
         entidade.setNome(dto.getNome());
         entidade.setDescricao(dto.getDescricao());
-        return categoriaChamadoRepository.save(entidade);
+        return categoriaDeChamadoRepository.save(entidade);
     }
 
     public void deletar(Long id) {
-        categoriaChamadoRepository.deleteById(id);
+        categoriaDeChamadoRepository.deleteById(id);
     }
 }
