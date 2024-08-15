@@ -14,7 +14,12 @@ public class CategoriaDeChamadoEntradaDTO {
     private String descricao;
 
     static public CategoriaDeChamado paraEntidade(CategoriaDeChamadoEntradaDTO dto) {
+        return paraEntidade(dto, null);
+    }
+
+    static public CategoriaDeChamado paraEntidade(CategoriaDeChamadoEntradaDTO dto, Long id) {
         var entidade = new CategoriaDeChamado();
+        entidade.setId(id);
         entidade.setNome(dto.getNome());
         entidade.setDescricao(dto.getDescricao());
         return entidade;

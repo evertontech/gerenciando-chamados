@@ -34,12 +34,12 @@ public class CategoriaDeChamadoController {
     }
 
     @PutMapping("/{id}")
-    public CategoriaDeChamado atualizar(@RequestBody CategoriaDeChamadoEntradaDTO dto, @PathVariable Long id) {
+    public CategoriaDeChamadoDetalheSaidaDTO atualizar(@RequestBody CategoriaDeChamadoEntradaDTO dto, @PathVariable Long id) {
         return categoriaDeChamadoService.atualizar(dto, id);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deletar(@PathVariable Long id) {
-        categoriaDeChamadoService.deletar(id);
+    public Optional<CategoriaDeChamadoDetalheSaidaDTO> deletar(@PathVariable Long id) {
+        return categoriaDeChamadoService.deletar(id);
     }
 }

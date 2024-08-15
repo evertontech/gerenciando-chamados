@@ -39,15 +39,24 @@ public class CategoriaDeChamadoService {
         return Optional.empty();
     }
 
-    public CategoriaDeChamado atualizar(CategoriaDeChamadoEntradaDTO dto, Long id) {
-        CategoriaDeChamado entidade = new CategoriaDeChamado();
-        entidade.setId(id);
-        entidade.setNome(dto.getNome());
-        entidade.setDescricao(dto.getDescricao());
-        return categoriaDeChamadoRepository.save(entidade);
+    public CategoriaDeChamadoDetalheSaidaDTO atualizar(CategoriaDeChamadoEntradaDTO dto, Long id) {
+        Optional<CategoriaDeChamado> pesquisa = categoriaDeChamadoRepository.findById(id);
+        if (pesquisa.isPresent()) {
+            var entidade = CategoriaDeChamadoEntradaDTO.paraEntidade(dto, id);
+            categoriaDeChamadoRepository.save(entidade);
+            return CategoriaDeChamadoDetalheSaidaDTO.paraDto(entidade);
+        }
+        return null;
     }
 
-    public void deletar(Long id) {
-        categoriaDeChamadoRepository.deleteById(id);
+    public Optional<CategoriaDeChamadoDetalheSaidaDTO> deletar(Long id) {
+        Optional<CategoriaDeChamado> pesquisa = categoriaDeChamadoRepository.findById(id);
+        if (pesquisa.isPresent()) {
+            var entidade = pesquisa.get();
+            categoriaDeChamadoRepository.deleteById(id);
+            var dto = CategoriaDeChamadoDetalheSaidaDTO.paraDto(entidade);
+            return Optional.of(dto);
+        }
+        return Optional.empty();
     }
 }
