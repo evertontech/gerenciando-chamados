@@ -1,7 +1,6 @@
 package io.github.evertontech.gerenciando_chamados.model.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
@@ -39,7 +38,7 @@ public class Chamado {
     private Tecnico tecnico;
 
     @ManyToOne
-    private CategoriaChamado categoria;
+    private CategoriaDeChamado categoria;
 
     public Chamado() {
         this.setDataAbertura(LocalDateTime.now());
@@ -109,11 +108,11 @@ public class Chamado {
         return this.tecnico;
     }
 
-    public void setCategoria(CategoriaChamado categoria) {
+    public void setCategoria(CategoriaDeChamado categoria) {
         this.categoria = categoria;
     }
 
-    public CategoriaChamado getCategoria() {
+    public CategoriaDeChamado getCategoria() {
         return this.categoria;
     }
 }
