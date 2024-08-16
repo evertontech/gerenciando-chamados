@@ -1,6 +1,5 @@
 package io.github.evertontech.gerenciando_chamados.model.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +8,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 public class Tecnico {
 
@@ -16,19 +18,16 @@ public class Tecnico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Max(32)
-    @NotBlank
     private String nome;
 
-    @Max(32)
-    @NotBlank
+    private LocalDate criacaoCadastro;
+
     private String especialidade;
 
-    @Email
     private String email;
 
     public Tecnico() {
-
+        this.setCriacaoCadastro(LocalDate.now());
     }
 
     public void setId(Long id) {
@@ -61,5 +60,13 @@ public class Tecnico {
 
     public String getEmail() {
         return this.email;
+    }
+
+    public void setCriacaoCadastro(LocalDate criacaoCadastro) {
+        this.criacaoCadastro = criacaoCadastro;
+    }
+
+    public LocalDate getCriacaoCadastro() {
+        return this.criacaoCadastro;
     }
 }
