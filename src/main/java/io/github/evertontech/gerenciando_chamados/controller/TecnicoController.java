@@ -1,6 +1,8 @@
 package io.github.evertontech.gerenciando_chamados.controller;
 
 import io.github.evertontech.gerenciando_chamados.dto.entrada.TecnicoEntradaDTO;
+import io.github.evertontech.gerenciando_chamados.dto.saida.detalhe.TecnicoDetalheSaidaDTO;
+import io.github.evertontech.gerenciando_chamados.dto.saida.resumo.TecnicoResumoSaidaDTO;
 import io.github.evertontech.gerenciando_chamados.model.entity.Tecnico;
 import io.github.evertontech.gerenciando_chamados.service.TecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +18,22 @@ public class TecnicoController {
     TecnicoService tecnicoService;
 
     @PostMapping
-    public Tecnico criar(@RequestBody TecnicoEntradaDTO dto) {
+    public TecnicoDetalheSaidaDTO criar(@RequestBody TecnicoEntradaDTO dto) {
         return tecnicoService.criar(dto);
     }
 
     @GetMapping
-    public Iterable<Tecnico> listarTodos() {
+    public Iterable<TecnicoResumoSaidaDTO> listarTodos() {
         return tecnicoService.listar();
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<Tecnico> obterPorId(@PathVariable Long id) {
-        return tecnicoService.listarPorId(id);
+    public Optional<TecnicoResumoSaidaDTO> obterPorId(@PathVariable Long id) {
+        return tecnicoService.obterPorId(id);
     }
 
     @PutMapping(path = "/{id}")
-    public Tecnico atualizar(@RequestBody Tecnico tecnico, @PathVariable Long id) {
+    public TecnicoDetalheSaidaDTO atualizar(@RequestBody TecnicoEntradaDTO tecnico, @PathVariable Long id) {
         return tecnicoService.atualizar(tecnico, id);
     }
 

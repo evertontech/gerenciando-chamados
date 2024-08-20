@@ -1,7 +1,10 @@
 package io.github.evertontech.gerenciando_chamados.dto.entrada;
 
+import io.github.evertontech.gerenciando_chamados.enums.Especialidade;
+import io.github.evertontech.gerenciando_chamados.model.entity.Tecnico;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
 public class TecnicoEntradaDTO {
@@ -12,13 +15,27 @@ public class TecnicoEntradaDTO {
 
     @Max(32)
     @NotBlank
-    private String especialidade;
+    private Especialidade especialidade;
 
     @Email
     private String email;
 
+    @Min(8)
+    @Max(20)
+    @NotBlank
+    private String senha;
+
     public TecnicoEntradaDTO() {
 
+    }
+
+    static public Tecnico paraEntidade(TecnicoEntradaDTO dto) {
+        var entidade = new Tecnico();
+        entidade.setNome(dto.getNome());
+        entidade.setEspecialidade(dto.getEspecialidade());
+        entidade.setEmail(dto.getEmail());
+        entidade.setSenha(dto.getSenha());
+        return entidade;
     }
 
     public String getNome() {
@@ -29,11 +46,11 @@ public class TecnicoEntradaDTO {
         this.nome = nome;
     }
 
-    public String getEspecialidade() {
+    public Especialidade getEspecialidade() {
         return especialidade;
     }
 
-    public void setEspecialidade(String especialidade) {
+    public void setEspecialidade(Especialidade especialidade) {
         this.especialidade = especialidade;
     }
 
@@ -43,5 +60,13 @@ public class TecnicoEntradaDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

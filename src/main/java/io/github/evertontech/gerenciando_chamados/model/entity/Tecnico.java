@@ -1,5 +1,6 @@
 package io.github.evertontech.gerenciando_chamados.model.entity;
 
+import io.github.evertontech.gerenciando_chamados.enums.Especialidade;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,9 +23,11 @@ public class Tecnico {
 
     private LocalDate criacaoCadastro;
 
-    private String especialidade;
+    private Especialidade especialidade;
 
     private String email;
+
+    private String senha;
 
     public Tecnico() {
         this.setCriacaoCadastro(LocalDate.now());
@@ -46,11 +49,11 @@ public class Tecnico {
         return this.nome;
     }
 
-    public void setEspecialidade(String especialidade) {
+    public void setEspecialidade(Especialidade especialidade) {
         this.especialidade = especialidade;
     }
 
-    public String getEspecialidade() {
+    public Especialidade getEspecialidade() {
         return this.especialidade;
     }
 
@@ -68,5 +71,13 @@ public class Tecnico {
 
     public LocalDate getCriacaoCadastro() {
         return this.criacaoCadastro;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }
