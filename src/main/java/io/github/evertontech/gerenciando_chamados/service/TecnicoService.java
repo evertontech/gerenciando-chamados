@@ -45,7 +45,14 @@ public class TecnicoService {
         return TecnicoDetalheSaidaDTO.paraDTO(entidade);
     }
 
-    public void deletar(Long id) {
-        tecnicoRepository.deleteById(id);
+    public Optional<TecnicoDetalheSaidaDTO> deletar(Long id) {
+        var pesquisa = tecnicoRepository.findById(id);
+        if (pesquisa.isPresent()) {
+            tecnicoRepository.deleteById(id);
+            var entidade = pesquisa.get();
+            var dto = TecnicoDetalheSaidaDTO.paraDTO(entidade);
+            return Optional.of(dto);
+        }
+        return Optional.empty();
     }
 }

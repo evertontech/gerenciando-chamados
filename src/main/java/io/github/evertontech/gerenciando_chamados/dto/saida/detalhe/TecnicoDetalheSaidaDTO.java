@@ -1,7 +1,10 @@
 package io.github.evertontech.gerenciando_chamados.dto.saida.detalhe;
+
 import io.github.evertontech.gerenciando_chamados.enums.Especialidade;
 import io.github.evertontech.gerenciando_chamados.model.entity.Tecnico;
+
 import java.time.LocalDate;
+
 public class TecnicoDetalheSaidaDTO {
 
     private Long id;

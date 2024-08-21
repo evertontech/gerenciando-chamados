@@ -1,16 +1,9 @@
 package io.github.evertontech.gerenciando_chamados.model.entity;
 
 import io.github.evertontech.gerenciando_chamados.enums.Especialidade;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class Tecnico {
@@ -23,6 +16,7 @@ public class Tecnico {
 
     private LocalDate criacaoCadastro;
 
+    @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
 
     private String email;

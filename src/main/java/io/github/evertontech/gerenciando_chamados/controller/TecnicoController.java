@@ -3,7 +3,6 @@ package io.github.evertontech.gerenciando_chamados.controller;
 import io.github.evertontech.gerenciando_chamados.dto.entrada.TecnicoEntradaDTO;
 import io.github.evertontech.gerenciando_chamados.dto.saida.detalhe.TecnicoDetalheSaidaDTO;
 import io.github.evertontech.gerenciando_chamados.dto.saida.resumo.TecnicoResumoSaidaDTO;
-import io.github.evertontech.gerenciando_chamados.model.entity.Tecnico;
 import io.github.evertontech.gerenciando_chamados.service.TecnicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +37,7 @@ public class TecnicoController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deletar(@PathVariable Long id) {
-        tecnicoService.deletar(id);
+    public Optional<TecnicoDetalheSaidaDTO> deletar(@PathVariable Long id) {
+        return tecnicoService.deletar(id);
     }
 }
