@@ -3,7 +3,6 @@ package io.github.evertontech.gerenciando_chamados.controller;
 import io.github.evertontech.gerenciando_chamados.dto.entrada.CategoriaDeChamadoEntradaDTO;
 import io.github.evertontech.gerenciando_chamados.dto.saida.detalhe.CategoriaDeChamadoDetalheSaidaDTO;
 import io.github.evertontech.gerenciando_chamados.dto.saida.resumo.CategoriaDeChamadoResumoSaidaDTO;
-import io.github.evertontech.gerenciando_chamados.model.entity.CategoriaDeChamado;
 import io.github.evertontech.gerenciando_chamados.service.CategoriaDeChamadoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
