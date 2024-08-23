@@ -29,13 +29,18 @@ public class TecnicoEntradaDTO {
 
     }
 
-    static public Tecnico paraEntidade(TecnicoEntradaDTO dto) {
+    static public Tecnico paraEntidade(TecnicoEntradaDTO dto, Long id) {
         var entidade = new Tecnico();
+        entidade.setId(id);
         entidade.setNome(dto.getNome());
         entidade.setEspecialidade(dto.getEspecialidade());
         entidade.setEmail(dto.getEmail());
         entidade.setSenha(dto.getSenha());
         return entidade;
+    }
+
+    static public Tecnico paraEntidade(TecnicoEntradaDTO dto) {
+        return paraEntidade(dto, null);
     }
 
     public String getNome() {

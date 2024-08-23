@@ -40,9 +40,13 @@ public class TecnicoService {
     }
 
     public TecnicoDetalheSaidaDTO atualizar(TecnicoEntradaDTO tecnico, Long id) {
-        var entidade = TecnicoEntradaDTO.paraEntidade(tecnico);
-        tecnicoRepository.save(entidade);
-        return TecnicoDetalheSaidaDTO.paraDTO(entidade);
+        Optional<Tecnico> pesquisa = tecnicoRepository.findById(id);
+        if (pesquisa.isPresent()) {
+            var entidade = TecnicoEntradaDTO.paraEntidade(tecnico, id);
+            tecnicoRepository.save(entidade);
+            return TecnicoDetalheSaidaDTO.paraDTO(entidade);
+        }
+        return null;
     }
 
     public Optional<TecnicoDetalheSaidaDTO> deletar(Long id) {
