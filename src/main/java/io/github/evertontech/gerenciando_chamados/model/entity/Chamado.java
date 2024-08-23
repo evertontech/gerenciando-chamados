@@ -5,7 +5,8 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Entity
 public class Chamado {
@@ -29,10 +30,10 @@ public class Chamado {
     private String prioridade;
 
 
-    private LocalDateTime dataAbertura;
+    private LocalDate dataAbertura;
 
     @PastOrPresent
-    private LocalDateTime dataFechamento;
+    private LocalDate dataFechamento;
 
     @ManyToOne
     private Tecnico tecnico;
@@ -41,7 +42,7 @@ public class Chamado {
     private CategoriaDeChamado categoria;
 
     public Chamado() {
-        this.setDataAbertura(LocalDateTime.now());
+        this.setDataAbertura(LocalDate.now());
     }
 
     public void setId(Long id) {
@@ -84,19 +85,19 @@ public class Chamado {
         return this.prioridade;
     }
 
-    public void setDataAbertura(LocalDateTime dataAbertura) {
+    public void setDataAbertura(LocalDate dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public LocalDateTime getDataAbertura() {
+    public LocalDate getDataAbertura() {
         return this.dataAbertura;
     }
 
-    public void setDataFechamento(LocalDateTime dataFechamento) {
+    public void setDataFechamento(LocalDate dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
-    public LocalDateTime getDataFechamento() {
+    public LocalDate getDataFechamento() {
         return this.dataFechamento;
     }
 

@@ -26,4 +26,9 @@ public class ChamadoController {
         return chamadoService.obterPorId(id);
     }
 
+    @PutMapping("/{id}")
+    public ChamadoDetalheSaidaDTO atualizar(@RequestBody ChamadoEntradaDTO dto, @PathVariable Long id) {
+        return chamadoService.atualizar(dto, id);
+    }
+
 }

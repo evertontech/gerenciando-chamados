@@ -4,6 +4,7 @@ import io.github.evertontech.gerenciando_chamados.dto.saida.resumo.CategoriaDeCh
 import io.github.evertontech.gerenciando_chamados.dto.saida.resumo.TecnicoResumoSaidaDTO;
 import io.github.evertontech.gerenciando_chamados.model.entity.Chamado;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ChamadoDetalheSaidaDTO {
@@ -17,9 +18,9 @@ public class ChamadoDetalheSaidaDTO {
 
     private String prioridade;
 
-    private LocalDateTime dataAbertura;
+    private LocalDate dataAbertura;
 
-    private LocalDateTime dataFechamento;
+    private LocalDate dataFechamento;
 
     private TecnicoResumoSaidaDTO tecnico;
 
@@ -79,19 +80,19 @@ public class ChamadoDetalheSaidaDTO {
         this.prioridade = prioridade;
     }
 
-    public LocalDateTime getDataAbertura() {
+    public LocalDate getDataAbertura() {
         return dataAbertura;
     }
 
-    public void setDataAbertura(LocalDateTime dataAbertura) {
+    public void setDataAbertura(LocalDate dataAbertura) {
         this.dataAbertura = dataAbertura;
     }
 
-    public LocalDateTime getDataFechamento() {
+    public LocalDate getDataFechamento() {
         return dataFechamento;
     }
 
-    public void setDataFechamento(LocalDateTime dataFechamento) {
+    public void setDataFechamento(LocalDate dataFechamento) {
         this.dataFechamento = dataFechamento;
     }
 
