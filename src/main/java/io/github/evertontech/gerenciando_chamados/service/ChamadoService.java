@@ -2,13 +2,19 @@ package io.github.evertontech.gerenciando_chamados.service;
 
 import io.github.evertontech.gerenciando_chamados.dto.entrada.ChamadoEntradaDTO;
 import io.github.evertontech.gerenciando_chamados.dto.saida.detalhe.ChamadoDetalheSaidaDTO;
+import io.github.evertontech.gerenciando_chamados.dto.saida.resumo.ChamadoResumoSaidaDTO;
+import io.github.evertontech.gerenciando_chamados.model.entity.Chamado;
 import io.github.evertontech.gerenciando_chamados.model.repository.CategoriaDeChamadoRepository;
 import io.github.evertontech.gerenciando_chamados.model.repository.ChamadoRepository;
 import io.github.evertontech.gerenciando_chamados.model.repository.TecnicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Service
 public class ChamadoService {
@@ -45,9 +51,19 @@ public class ChamadoService {
         return Optional.empty();
     }
 
-//    public Iterable<ChamadoResumoSaidaDTO> listarTodos(Long id) {
-//        return chamadoRepository.findAll();
-//    }
+    public Iterable<ChamadoResumoSaidaDTO> listarTodos() {
+        var chamados = chamadoRepository.findAll();
+
+        List<ChamadoResumoSaidaDTO> dtos = new ArrayList<>();
+
+        for (Chamado chamado : chamados) {
+            var dto = ChamadoResumoSaidaDTO.paraDto(chamado);
+            dtos.add(dto);
+        }
+
+        return dtos;
+
+    }
 
     public ChamadoDetalheSaidaDTO atualizar(ChamadoEntradaDTO dto, Long id) {
         var pesquisa = chamadoRepository.findById(id);
@@ -63,5 +79,16 @@ public class ChamadoService {
             }
         }
         return null;
+    }
+
+    public Optional<ChamadoDetalheSaidaDTO> deletar(Long id) {
+        var pesquisa = chamadoRepository.findById(id);
+        if (pesquisa.isPresent()) {
+            var entidade = pesquisa.get();
+            chamadoRepository.deleteById(id);
+            var dto = ChamadoDetalheSaidaDTO.paraDto(entidade);
+            return Optional.of(dto);
+        }
+        return Optional.empty();
     }
 }

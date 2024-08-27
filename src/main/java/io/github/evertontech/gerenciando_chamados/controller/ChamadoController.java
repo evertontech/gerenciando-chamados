@@ -2,6 +2,7 @@ package io.github.evertontech.gerenciando_chamados.controller;
 
 import io.github.evertontech.gerenciando_chamados.dto.entrada.ChamadoEntradaDTO;
 import io.github.evertontech.gerenciando_chamados.dto.saida.detalhe.ChamadoDetalheSaidaDTO;
+import io.github.evertontech.gerenciando_chamados.dto.saida.resumo.ChamadoResumoSaidaDTO;
 import io.github.evertontech.gerenciando_chamados.model.entity.Chamado;
 import io.github.evertontech.gerenciando_chamados.service.ChamadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,19 @@ public class ChamadoController {
         return chamadoService.obterPorId(id);
     }
 
+    @GetMapping
+    public Iterable<ChamadoResumoSaidaDTO> ListaTodos() {
+        return chamadoService.listarTodos();
+    }
+
     @PutMapping("/{id}")
     public ChamadoDetalheSaidaDTO atualizar(@RequestBody ChamadoEntradaDTO dto, @PathVariable Long id) {
         return chamadoService.atualizar(dto, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public Optional<ChamadoDetalheSaidaDTO> deletar(@PathVariable Long id) {
+        return chamadoService.deletar(id);
     }
 
 }
