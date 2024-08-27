@@ -27,7 +27,7 @@ public class TecnicoController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<TecnicoResumoSaidaDTO> obterPorId(@PathVariable Long id) {
+    public Optional<TecnicoDetalheSaidaDTO> obterPorId(@PathVariable Long id) {
         return tecnicoService.obterPorId(id);
     }
 

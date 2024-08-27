@@ -29,11 +29,11 @@ public class TecnicoService {
         return stream.map(TecnicoResumoSaidaDTO::paraDto).toList();
     }
 
-    public Optional<TecnicoResumoSaidaDTO> obterPorId(Long id) {
+    public Optional<TecnicoDetalheSaidaDTO> obterPorId(Long id) {
         Optional<Tecnico> pesquisa = tecnicoRepository.findById(id);
         if (pesquisa.isPresent()) {
             var entidade = pesquisa.get();
-            var dto = TecnicoResumoSaidaDTO.paraDto(entidade);
+            var dto = TecnicoDetalheSaidaDTO.paraDTO(entidade);
             return Optional.of(dto);
         }
         return Optional.empty();
